@@ -4,7 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon  ./src/index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "koa-jwt": "^4.0.0",
+    "koa-logger": "^3.2.1",
+    "koa-mysql-session": "0.0.2",
+    "koa-router": "^9.1.0",
+    "koa-session-minimal": "^4.0.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.4"
   },
   "keywords": [],
   "author": "",
