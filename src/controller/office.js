@@ -58,11 +58,53 @@ exports.insterClockIn = async (ctx, next) => {
 }
 
 /**
- * 请假
+ * 请假申请
  */
-exports.askLeave = async (ctx, next) => {
-    ctx.body = {
-        code: 1,
-        data: []
+exports.insterAskLeave = async (ctx, next) => {
+    const {username, date, reason, address, remarks} = ctx.request.body
+    const create_at = new Date()
+    if ((username && date && reason && address && remarks) !== null) {
+        await OfficeModal.insterBusinessTrip([username, date, address, reason, remarks, create_at])
+            .then(ret => {
+                ctx.body = {
+                    code: 1,
+                    data: ret
+                }
+            })
+            .catch(err => {
+                ctx.body = {
+                    code: -1,
+                    data: err
+                }
+            })
+    } else {
+        ctx.body = '请填写正确的字段'
     }
+    
+    await next()
+}
+
+/* 查询当前用户请假 */
+exports.getAskLeaveById = async (ctx, next) => {
+    const { id } = ctx.request.body
+    console.log('id', id)
+    if (id !== null) {
+        await OfficeModal.findBusinessTrip(id)
+            .then(ret => {
+                ctx.body = {
+                    code: 1,
+                    data: ret
+                }
+            })
+            .catch(err => {
+                ctx.body = {
+                    code: -1,
+                    data: err
+                }
+            })
+    } else {
+        ctx.body = '请输入正确的查询参数'
+    }
+
+    await next()
 }
