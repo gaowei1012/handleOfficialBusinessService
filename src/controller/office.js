@@ -13,7 +13,7 @@ exports.getAllEvent = async (ctx, next) => {
             .then(ret => {
                 ctx.body = {
                     code: 1,
-                    data: ret
+                    data: '注册成功'
                 }
             })
             .catch(err => {
@@ -64,7 +64,7 @@ exports.insterAskLeave = async (ctx, next) => {
     const {username, date, reason, address, remarks} = ctx.request.body
     const create_at = new Date()
     if ((username && date && reason && address && remarks) !== null) {
-        await OfficeModal.insterBusinessTrip([username, date, address, reason, remarks, create_at])
+        await OfficeModal.insertLeave([username, date, address, reason, remarks, create_at])
             .then(ret => {
                 ctx.body = {
                     code: 1,
@@ -89,7 +89,7 @@ exports.getAskLeaveById = async (ctx, next) => {
     const { id } = ctx.request.body
     console.log('id', id)
     if (id !== null) {
-        await OfficeModal.findBusinessTrip(id)
+        await OfficeModal.findLeaveById(id)
             .then(ret => {
                 ctx.body = {
                     code: 1,

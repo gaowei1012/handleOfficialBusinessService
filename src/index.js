@@ -26,6 +26,7 @@ app
     .use(require('./routers/user').routes())
     .use(require('./routers/office').routes())
     .use(require('./routers/leave').routes())
+    .use(require('./routers/buiness').routes())
 
 
 app.listen(port, () => {

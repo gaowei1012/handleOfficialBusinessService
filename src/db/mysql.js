@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 const { database } = require('../config')
-const { users, clock, askleave } = require('./init')
+const { users, clock, askleave, buiness } = require('./init')
 
 const pool = mysql.createPool({
     host: database.HOST,
@@ -36,6 +36,7 @@ const createTable = (sql) => {
 createTable(users)
 createTable(clock)
 createTable(askleave)
+createTable(buiness)
 
 // 用户注册
 exports.insterUserData = (val) => {
@@ -67,15 +68,27 @@ exports.getAllClockIn = (id) => {
     return query(_sql)
 }
 
-// 插入出差
-exports.insterBusinessTrip = (val) => {
+// 插入请假
+exports.insertLeave = (val) => {
     const _sql = 'insert into askleave set username=?, date=?, address=?, reason=?, remarks=?, create_at=?;';
     return query(_sql, val)
 }
 
 
-// 查询出差
-exports.findBusinessTrip = (id) => {
+// 查询请假
+exports.findLeaveById = (id) => {
     const _sql = `select * from askleave where id=${id};`
+    return query(_sql)
+}
+
+// 插入出差
+exports.insterBusiness = (val) => {
+    const _sql = 'insert into buiness set username=?, date=?, address=?, reason=?, remarks=?, create_at=?;';
+    return query(_sql, val)
+}
+
+// 查询出差
+exports.findBusinessById = (id) => {
+    const _sql = `select * from buiness where id=${id};`
     return query(_sql)
 }
