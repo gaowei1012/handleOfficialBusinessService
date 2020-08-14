@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 const { database } = require('../config')
-const { users } = require('./init')
+const { users, clock } = require('./init')
 
 const pool = mysql.createPool({
     host: database.HOST,
@@ -34,6 +34,7 @@ const createTable = (sql) => {
 }
 
 createTable(users)
+createTable(clock)
 
 // 用户注册
 exports.insterUserData = (val) => {
@@ -51,5 +52,11 @@ exports.getUserInfo = (id) => {
 exports.getUserLogin = (username, password) => {
     const _sql = `select * from users where username=${username},password=${password};`;
     return query(_sql)
+}
+
+// 用户打卡
+exports.insterClockIn = (val) => {
+    const _sql = 'inster into office set username=?, create_at=?, update_at=?, address=?;';
+    return query(_sql, val)
 }
 

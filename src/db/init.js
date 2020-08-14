@@ -20,6 +20,18 @@ const order = `
     ) character set = utf8;   
 `
 
+const clock = `
+    create table if not exists clock(
+        id INT NOT NULL AUTO_INCREMENT,
+        username VARCHAR(100) NOT NULL COMMENT '用户名',
+        address VARCHAR(100) NOT NULL COMMENT '定位地址',
+        create_at VARCHAR(100) NOT NULL COMMENT '用户上班时间',
+        update_at VARCHAR(100) NOT NULL COMMENT '用户下班时间',
+        PRIMARY KEY(id)
+    ) character set = utf8;
+`
+
 module.exports = {
-    users
+    users,
+    clock,
 }
