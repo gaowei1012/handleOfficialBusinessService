@@ -60,3 +60,9 @@ exports.insterClockIn = (val) => {
     return query(_sql, val)
 }
 
+// 获取当前用户所有打卡信息
+exports.getAllClockIn = (id) => {
+    const _sql = `select * from office where id=${id};`;
+    return query(_sql)
+}
+

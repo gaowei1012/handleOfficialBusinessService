@@ -3,13 +3,30 @@ const OfficeModal = require('../db/mysql')
 
 /**
  * 获取打卡记录
+ * 查询条件: 时间的起末
  * 一天中，已经打开为1，未打卡为0
  */
 exports.getAllEvent = async (ctx, next) => {
-    ctx.body = {
-        code: 1,
-        data: []
+    const {id} = ctx.request.body
+    if (id !== null) {
+        await OfficeModal.getAllClockIn(id)
+            .then(ret => {
+                ctx.body = {
+                    code: 1,
+                    data: ret
+                }
+            })
+            .catch(err => {
+                ctx.body = {
+                    code: -1,
+                    data: err
+                }
+            })
+    } else {
+        ctx.body = '用户查询id不能为空'
     }
+    
+    await next()
 }
 
 /**
