@@ -28,6 +28,7 @@ app
     .use(require('./routers/leave').routes())
     .use(require('./routers/buiness').routes())
     .use(require('./routers/overtime').routes())
+    .use(require('./routers/message').routes())
 
 
 app.listen(port, () => {
