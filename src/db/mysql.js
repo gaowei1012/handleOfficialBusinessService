@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 const { database } = require('../config')
-const { users, clock, askleave, buiness } = require('./init')
+const { users, clock, askleave, buiness, overtime } = require('./init')
 
 const pool = mysql.createPool({
     host: database.HOST,
@@ -37,6 +37,7 @@ createTable(users)
 createTable(clock)
 createTable(askleave)
 createTable(buiness)
+createTable(overtime)
 
 // 用户注册
 exports.insterUserData = (val) => {
@@ -91,4 +92,10 @@ exports.insterBusiness = (val) => {
 exports.findBusinessById = (id) => {
     const _sql = `select * from buiness where id=${id};`
     return query(_sql)
+}
+
+// 加班申请
+exports.insertOverTime = (val) => {
+    const _sql = 'insert into overtime set username=?, date=?, address=?, reason=?, remarks=?, create_at=?;';
+    return query(_sql, val)
 }

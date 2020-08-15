@@ -57,9 +57,23 @@ const buiness = `
     ) character set = utf8;
 `
 
+const overtime = `
+    create table if not exists overtime(
+        id INT NOT NULL AUTO_INCREMENT,
+        username VARCHAR(100) NOT NULL COMMENT '用户名',
+        date VARCHAR(100) NOT NULL COMMENT '起始时间',
+        address VARCHAR(100) NOT NULL COMMENT '目的地',
+        reason VARCHAR(100) NOT NULL COMMENT '事项',
+        remarks VARCHAR(255) NOT NULL COMMENT '备注',
+        create_at VARCHAR(100) NOT NULL COMMENT '创建时间',
+        PRIMARY KEY(id)
+    ) character set = utf8;
+`
+
 module.exports = {
     users,
     clock,
     askleave,
     buiness,
+    overtime,
 }
