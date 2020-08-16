@@ -53,8 +53,8 @@ exports.getUserInfo = (id) => {
 }
 
 // 用户登录
-exports.getUserLogin = (username, password) => {
-    const _sql = `select * from users where username=${username},password=${password};`;
+exports.findUserLogin = (username, password) => {
+    const _sql = `select * from users where username='${username}' and password='${password}';`;
     return query(_sql)
 }
 
