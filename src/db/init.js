@@ -81,11 +81,25 @@ const message = `
     ) character set = utf8;
 `
 
+const resign = `
+    create table if not exists resign(
+        id INT NOT NULL AUTO_INCREMENT,
+        username VARCHAR(100) NOT NULL COMMENT '用户名',
+        start_time VARCHAR(100) NOT NULL COMMENT '开始时间',
+        end_time VARCHAR(100) NOT NULL COMMENT '结束时间',
+        reason VARCHAR(100) NOT NULL COMMENT '离职原因',
+        remarks VARCHAR(255) NOT NULL COMMENT '备注',
+        create_at VARCHAR(100) NOT NULL COMMENT '创建时间',
+        PRIMARY KEY(id)
+    ) character set = utf8;
+`
+
 module.exports = {
     users,
     clock,
     askleave,
     buiness,
     overtime,
-    message
+    message,
+    resign,
 }

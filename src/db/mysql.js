@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 const { database } = require('../config')
-const { users, clock, askleave, buiness, overtime, message } = require('./init')
+const { users, clock, askleave, buiness, overtime, message, resign } = require('./init')
 
 const pool = mysql.createPool({
     host: database.HOST,
@@ -39,6 +39,7 @@ createTable(askleave)
 createTable(buiness)
 createTable(overtime)
 createTable(message)
+createTable(resign)
 
 // 用户注册
 exports.insterUserData = (val) => {
@@ -111,4 +112,11 @@ exports.insertMessage = (val) => {
 exports.findMessage = () => {
     const _sql = `select * from message;`;
     return query(_sql)
+}
+
+
+// 添加离职
+exports.insertResign = (val) => {
+    const _sql = 'insert into resign set username=?, start_time=?, end_time=?, reason=?, remarks=?, create_at=?;';
+    return query(_sql, val)
 }
