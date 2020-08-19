@@ -124,7 +124,7 @@ exports.insertResign = (val) => {
 
 // 发表新闻
 exports.insertCompany = (val) => {
-    const _sql = 'insert into company set title=?, detail=?, content=?, create_at=?;';
+    const _sql = 'insert into company set title=?, detail=?, content=?, url=?, create_at=?;';
     return query(_sql, val)
 }
 

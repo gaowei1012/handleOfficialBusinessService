@@ -6,10 +6,10 @@ const CompanyModal = require('../db/mysql')
  * @param {*} next 
  */
 exports.insertCompany = async (ctx, next) => {
-    let { title, content, detail } = ctx.request.body
+    let { title, content, detail, url } = ctx.request.body
     let create_at = new Date()
     if ((title && content && detail) !== null) {
-        await CompanyModal.insertCompany([title, detail, content, create_at])
+        await CompanyModal.insertCompany([title, detail, content, url, create_at])
             .then(ret => {
                 ctx.body = {
                     code: 1,
@@ -65,6 +65,7 @@ exports.findCompanyAll = async (ctx, next) => {
  */
 exports.findCompanyDetail = async (ctx, next) => {
     let { id } = ctx.request.body
+    console.log('id--', id)
     if (id !== null) {
         await CompanyModal.findCompanyById(id)
             .then(ret => {
