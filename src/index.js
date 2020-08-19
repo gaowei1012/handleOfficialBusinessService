@@ -30,6 +30,7 @@ app
     .use(require('./routers/overtime').routes())
     .use(require('./routers/message').routes())
     .use(require('./routers/resign').routes())
+    .use(require('./routers/company').routes())
 
 
 app.listen(port, () => {

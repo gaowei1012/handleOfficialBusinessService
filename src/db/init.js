@@ -94,6 +94,17 @@ const resign = `
     ) character set = utf8;
 `
 
+const company = `
+    create table if not exists company(
+        id INT NOT NULL AUTO_INCREMENT,
+        title VARCHAR(100) NOT NULL COMMENT '标题',
+        detail VARCHAR(255) NOT NULL COMMENT '描述',
+        content VARCHAR(255) NOT NULL COMMENT '内容',
+        create_at VARCHAR(100) NOT NULL COMMENT '创建时间',
+        PRIMARY KEY(id)
+    ) character set = utf8;
+`
+
 module.exports = {
     users,
     clock,
@@ -102,4 +113,5 @@ module.exports = {
     overtime,
     message,
     resign,
+    company,
 }

@@ -109,3 +109,16 @@ create database gourmet;
 | create_at | varchar(100) | NO   |     | NULL    |                |
 +-----------+--------------+------+-----+---------+----------------+
 ```
+
+- company 
+```
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| title     | varchar(100) | NO   |     | NULL    |                |
+| detail    | varchar(255) | NO   |     | NULL    |                |
+| content   | varchar(255) | NO   |     | NULL    |                |
+| create_at | varchar(100) | NO   |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+```
